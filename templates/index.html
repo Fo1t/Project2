@@ -1,0 +1,122 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div id="content">
+                <div class="container-fluid">
+<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Карты</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12">
+                                
+                                        <div>
+                                                <form method=POST>
+                                                {% csrf_token %}
+                                                {{ form.as_table }}
+                                                <input type="submit" value="Поиск">
+                                                </form>
+                                        </div>
+                                </div>
+                                <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row"><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100.672px;">Серия</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 400px;">Номер карты</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 153.344px;">Дата выпуска</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 153.344px;">Дата окончания активности</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 153.344px;">Статус</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 50px;">Удалить</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 50px;">Активировать</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 50px;">Деактивировать</th></tr>
+                                    </thead>
+                                        <tbody>
+                                            {% for card in card_identity %}
+                                            <tr class="odd">
+                                                    <td>{{ card.series }}</td>
+                                                    <td><a href="{{ card.identity }}">{{ card.identity }}</a></td>
+                                                    <td>{{ card.date_of_issue }}</td>
+                                                    <td>{{ card.valid_thru }}</td>
+                                                    <td>{{ card.get_status_display }}</td>
+                                                    <td><a href="/{{ card.identity }}/delete">Удалить</a></td>
+                                                    <td><a href="/{{ card.identity }}/activate">Активировать</a></td>
+                                                    <td><a href="/{{ card.identity }}/deactivate">Деактивировать</a></td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% for card in card_status %}
+                                            <tr class="odd">
+                                                    <td>{{ card.series }}</td>
+                                                    <td><a href="{{ card.identity }}">{{ card.identity }}</a></td>
+                                                    <td>{{ card.date_of_issue }}</td>
+                                                    <td>{{ card.valid_thru }}</td>
+                                                    <td>{{ card.get_status_display }}</td>
+                                                    <td><a href="/{{ card.identity }}/delete">Удалить</a></td>
+                                                    <td><a href="/{{ card.identity }}/activate">Активировать</a></td>
+                                                    <td><a href="/{{ card.identity }}/deactivate">Деактивировать</a></td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% for card in card_series %}
+                                            <tr class="odd">
+                                                    <td>{{ card.series }}</td>
+                                                    <td><a href="{{ card.identity }}">{{ card.identity }}</a></td>
+                                                    <td>{{ card.date_of_issue }}</td>
+                                                    <td>{{ card.valid_thru }}</td>
+                                                    <td>{{ card.get_status_display }}</td>
+                                                    <td><a href="/{{ card.identity }}/delete">Удалить</a></td>
+                                                    <td><a href="/{{ card.identity }}/activate">Активировать</a></td>
+                                                    <td><a href="/{{ card.identity }}/deactivate">Деактивировать</a></td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% for card in card_date_of_issue %}
+                                            <tr class="odd">
+                                                    <td>{{ card.series }}</td>
+                                                    <td><a href="{{ card.identity }}">{{ card.identity }}</a></td>
+                                                    <td>{{ card.date_of_issue }}</td>
+                                                    <td>{{ card.valid_thru }}</td>
+                                                    <td>{{ card.get_status_display }}</td>
+                                                    <td><a href="/{{ card.identity }}/delete">Удалить</a></td>
+                                                    <td><a href="/{{ card.identity }}/activate">Активировать</a></td>
+                                                    <td><a href="/{{ card.identity }}/deactivate">Деактивировать</a></td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% for card in card_valid_thru %}
+                                            <tr class="odd">
+                                                    <td>{{ card.series }}</td>
+                                                    <td><a href="{{ card.identity }}">{{ card.identity }}</a></td>
+                                                    <td>{{ card.date_of_issue }}</td>
+                                                    <td>{{ card.valid_thru }}</td>
+                                                    <td>{{ card.get_status_display }}</td>
+                                                    <td><a href="/{{ card.identity }}/delete">Удалить</a></td>
+                                                    <td><a href="/{{ card.identity }}/activate">Активировать</a></td>
+                                                    <td><a href="/{{ card.identity }}/deactivate">Деактивировать</a></td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                </table>
+                                <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row"><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100.672px;">Серия</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 400px;">Номер карты</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 153.344px;">Дата выпуска</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 153.344px;">Дата окончания активности</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 153.344px;">Статус</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 50px;">Удалить</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 50px;">Активировать</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 50px;">Деактивировать</th></tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr><th rowspan="1" colspan="1">Серия</th><th rowspan="1" colspan="1">Номер карты</th><th rowspan="1" colspan="1">Дата выпуска</th><th rowspan="1" colspan="1">Дата окончания активности</th><th rowspan="1" colspan="1">Статус</th><th rowspan="1" colspan="1">Удалить</th><th rowspan="1" colspan="1">Активировать</th><th rowspan="1" colspan="1">Деактивировать</th></tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for card in cards %}
+                                        <tr class="odd">
+                                                <td>{{ card.series }}</td>
+                                                <td><a href="{{ card.identity }}">{{ card.identity }}</a></td>
+                                                <td>{{ card.date_of_issue }}</td>
+                                                <td>{{ card.valid_thru }}</td>
+                                                <td>{{ card.get_status_display }}</td>
+                                                <td><a href="/{{ card.identity }}/delete">Удалить</a></td>
+                                                <td><a href="/{{ card.identity }}/activate">Активировать</a></td>
+                                                <td><a href="/{{ card.identity }}/deactivate">Деактивировать</a></td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+{% endblock %}

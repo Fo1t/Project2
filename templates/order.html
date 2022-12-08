@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div id="content">
+                <div class="container-fluid">
+<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Заказы</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12">
+                                  <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row"><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100.672px;">Информация о заказе</th></tr>
+                                    </thead>
+                                        <tbody>
+                                            {% for order in orders %}
+                                            <tr class="odd">
+                                                    <td>{{ order.items_info }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+{% endblock %}
